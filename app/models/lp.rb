@@ -1,0 +1,1 @@
+class Lp < Album; end

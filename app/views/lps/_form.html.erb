@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :condition %><br>
-    <%= f.number_field :condition %>
+    <%= f.select :condition, Lp.conditions.keys.map { |w| [w.humanize, w] } %>
   </div>
   <div class="actions">
     <%= f.submit %>
