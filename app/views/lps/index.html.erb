@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Condition</th>
     </tr>
   </thead>
 
@@ -14,7 +13,6 @@
     <% @lps.each do |lp| %>
       <tr>
         <td><%= link_to lp.title, lp %></td>
-        <td><%= lp.condition %></td>
       </tr>
     <% end %>
   </tbody>
