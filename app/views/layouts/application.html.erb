@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MusicDatabase</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="navigation">
+<%= link_to "Cd index", cds_path %>
+<%= link_to "Lp index", lps_path %>
+</div>
+<%= yield %>
+</body>
+</html>

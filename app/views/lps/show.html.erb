@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @lp.title %>
+</p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @lp.artist %>
+</p>
+
+<p>
+  <strong>Condition:</strong>
+  <%= @lp.condition %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @lp.type %>
+</p>
+
+<%= link_to 'Edit', edit_lp_path(@lp) %> |
+<%= link_to 'Back', lps_path %>

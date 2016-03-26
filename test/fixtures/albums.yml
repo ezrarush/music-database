@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  artist: MyString
+  condition: 1
+  type: 
+
+two:
+  title: MyString
+  artist: MyString
+  condition: 1
+  type: 
