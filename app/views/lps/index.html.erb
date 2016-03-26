@@ -1,28 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Lps</h1>
+<h1><%= @artist.name %>'s Lps</h1>
 
 <table>
   <thead>
     <tr>
       <th>Title</th>
-      <th>Artist</th>
       <th>Condition</th>
-      <th>Type</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @lps.each do |lp| %>
       <tr>
-        <td><%= lp.title %></td>
-        <td><%= lp.artist %></td>
+        <td><%= link_to lp.title, lp %></td>
         <td><%= lp.condition %></td>
-        <td><%= lp.type %></td>
-        <td><%= link_to 'Show', lp %></td>
-        <td><%= link_to 'Edit', edit_lp_path(lp) %></td>
-        <td><%= link_to 'Destroy', lp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Lp', new_lp_path %>
+<%= link_to 'New Lp', new_artist_lp_path(@artist) %>

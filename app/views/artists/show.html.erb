@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @artist.name %>
+</p>
+
+<p>
+  <%= link_to "Lps", artist_lps_path(@artist) %>
+</p>
+
+<%= link_to 'Edit', edit_artist_path(@artist) %> |
+<%= link_to 'Destroy', artist_path(@artist), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', artists_path %>

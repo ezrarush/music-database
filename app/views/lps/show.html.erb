@@ -21,4 +21,5 @@
 </p>
 
 <%= link_to 'Edit', edit_lp_path(@lp) %> |
-<%= link_to 'Back', lps_path %>
+<%= link_to 'Destroy', lp_path(@lp), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', artist_lps_path(@lp.artist) %>

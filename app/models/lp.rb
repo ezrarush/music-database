@@ -1,1 +1,3 @@
-class Lp < Album; end
+class Lp < Album
+  
+end

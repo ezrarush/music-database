@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
     <%= f.label :artist %><br>
     <%= f.text_field :artist %>
   </div>
   <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
     <%= f.label :condition %><br>
-    <%= f.number_field :condition %>
+    <%= f.select :condition, Lp.conditions.keys.map { |w| [w.humanize, w] } %>
   </div>
   <div class="field">
     <%= f.label :type %><br>

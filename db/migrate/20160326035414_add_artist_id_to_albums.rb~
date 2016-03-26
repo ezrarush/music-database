@@ -1,0 +1,4 @@
+class AddArtistIdToAlbums < ActiveRecord::Migration
+  def change
+  end
+end

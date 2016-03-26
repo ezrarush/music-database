@@ -1,28 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Cds</h1>
+<h1><%= @artist.name %>'s Cds</h1>
 
 <table>
   <thead>
     <tr>
       <th>Title</th>
-      <th>Artist</th>
-      <th>Condition</th>
-      <th>Type</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @cds.each do |cd| %>
       <tr>
-        <td><%= cd.title %></td>
-        <td><%= cd.artist %></td>
-        <td><%= cd.condition %></td>
-        <td><%= cd.type %></td>
-        <td><%= link_to 'Show', cd %></td>
-        <td><%= link_to 'Edit', edit_cd_path(cd) %></td>
-        <td><%= link_to 'Destroy', cd, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to cd.title, cd %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +20,4 @@
 
 <br>
 
-<%= link_to 'New Cd', new_cd_path %>
+<%= link_to 'New Cd', new_artist_cd_path(@artist) %>

@@ -4,7 +4,8 @@ class LpsController < ApplicationController
   # GET /lps
   # GET /lps.json
   def index
-    @lps = Lp.all
+    @artist = Artist.find params[:artist_id]
+    @lps = @artist.lps
   end
 
   # GET /lps/1
@@ -14,6 +15,7 @@ class LpsController < ApplicationController
 
   # GET /lps/new
   def new
+    @artist = Artist.find params[:artist_id]
     @lp = Lp.new
   end
 
@@ -24,8 +26,9 @@ class LpsController < ApplicationController
   # POST /lps
   # POST /lps.json
   def create
+    @artist = Artist.find params[:artist_id]    
     @lp = Lp.new(lp_params)
-    
+    @lp.artist = @artist
     respond_to do |format|
       if @lp.save
         format.html { redirect_to @lp, notice: 'Lp was successfully created.' }
@@ -54,9 +57,10 @@ class LpsController < ApplicationController
   # DELETE /lps/1
   # DELETE /lps/1.json
   def destroy
+    artist = @lp.artist
     @lp.destroy
     respond_to do |format|
-      format.html { redirect_to lps_url, notice: 'Lp was successfully destroyed.' }
+      format.html { redirect_to artist_lps_url(artist), notice: 'Lp was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
