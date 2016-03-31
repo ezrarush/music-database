@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'New Lp', new_artist_lp_path(@artist) %>
+
 <h1><%= @artist.name %>'s Lps</h1>
 
 <table>
@@ -17,7 +19,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Lp', new_artist_lp_path(@artist) %>
