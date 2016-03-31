@@ -22,9 +22,8 @@
     <%= f.text_field :title %>
   </div>
     <div class="field">
-    <div class="genre"
+      <%= label_tag "genre" %>
       <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) %>
-    </div>
   </div>
   <div class="field">
     <%= f.label :condition %><br>
