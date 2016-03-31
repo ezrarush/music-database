@@ -7,17 +7,35 @@
 
 <p>
   <strong>Artist:</strong>
-  <%= @lp.artist.name %>
+  <%= @lp.artist.try(:name) %>
+</p>
+
+<p>
+  <strong>Genres:</strong>
+  <% if @lp.genres.empty? %>
+    None
+  <% else %>
+    <ul>
+      <% @lp.genres.each do |genre| %>
+        <li><%= genre.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </p>
 
 <p>
   <strong>Condition:</strong>
-  <%= @lp.condition %>
+  <%= @lp.condition.humanize %>
 </p>
 
 <p>
   <strong>Type:</strong>
   <%= @lp.type %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @lp.note %>
 </p>
 
 <%= link_to 'Edit', edit_lp_path(@lp) %> |

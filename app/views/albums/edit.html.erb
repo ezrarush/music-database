@@ -1,6 +1,47 @@
 <h1>Editing Album</h1>
 
-<%= render 'form' %>
+<%= form_for(@album, as: :album, url: {controller: :albums, action: :update}) do |f| %>
+  <% if @album.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
+
+      <ul>
+      <% @album.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :artist %><br>
+    <%= f.collection_select(:artist_id, Artist.all, :id, :name, prompt: "Please select artist") %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+    <div class="field">
+    <div class="genre"
+      <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :condition %><br>
+    <%= f.select :condition, Lp.conditions.keys.map { |w| [w.humanize, w] } %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.select :type, Album.types.map{ |w| [w, w] } %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Show', @album %> |
 <%= link_to 'Back', albums_path %>

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Artists</h1>
+<h1>Listing Genres</h1>
 
 <table>
   <thead>
@@ -10,9 +10,9 @@
   </thead>
 
   <tbody>
-    <% @artists.each do |artist| %>
+    <% @genres.each do |genre| %>
       <tr>
-        <td><%= link_to artist.name, artist %></td>
+        <td><%= link_to genre.name, genre %></td>
       </tr>
     <% end %>
   </tbody>
@@ -20,4 +20,4 @@
 
 <br>
 
-<%= link_to 'New Artist', new_artist_path %>
+<%= link_to 'New Genre', new_genre_path %>

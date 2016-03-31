@@ -5,7 +5,7 @@ class LpsController < ApplicationController
   # GET /lps.json
   def index
     @artist = Artist.find params[:artist_id]
-    @lps = @artist.lps
+    @lps = @artist.lps.order("#{params[:sort]} #{params[:direction]}")
   end
 
   # GET /lps/1
@@ -73,6 +73,6 @@ class LpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lp_params
-      params.require(:lp).permit(:title, :artist, :condition, :type)
+      params.require(:lp).permit(:title, :artist, :condition, :type, :note, { genre_ids:[] })
     end
 end

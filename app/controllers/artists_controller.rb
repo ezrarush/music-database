@@ -4,7 +4,7 @@ class ArtistsController < ApplicationController
   # GET /artists
   # GET /artists.json
   def index
-    @artists = Artist.all
+    @artists = Artist.all.order("#{params[:sort]} #{params[:direction]}")
   end
 
   # GET /artists/1
@@ -55,8 +55,13 @@ class ArtistsController < ApplicationController
   # DELETE /artists/1.json
   def destroy
     @artist.destroy
+    
     respond_to do |format|
-      format.html { redirect_to artists_url, notice: 'Artist was successfully destroyed.' }
+      if @artist.errors
+        format.html { redirect_to artists_url, notice: "Artists with albums cannot be deleted. Please delete all of the artist's albums first." }
+      else
+        format.html { redirect_to artists_url, notice: 'Artist was successfully destroyed.' }
+      end
       format.json { head :no_content }
     end
   end
