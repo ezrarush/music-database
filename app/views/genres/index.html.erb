@@ -4,18 +4,26 @@
 
 <h1>Listing Genres</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= sortable "Name" %></th>
-    </tr>
-  </thead>
+<nav>
+  Filter: <%= alphabet_filter "Genre" %>
+</nav>
 
-  <tbody>
-    <% @genres.each do |genre| %>
+<% if @genres.empty? %>
+  None
+<% else %>
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to genre.name, genre %></td>
+	<th><%= sortable "Name" %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @genres.each do |genre| %>
+	<tr>
+	  <td><%= link_to genre.name, genre %></td>
+	</tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

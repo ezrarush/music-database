@@ -4,18 +4,26 @@
 
 <h1><%= @artist.name %>'s Lps</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= sortable "Title" %></th>
-    </tr>
-  </thead>
+<nav>
+  Filter: <%= alphabet_filter "Lp", @artist %>
+</nav>
 
-  <tbody>
-    <% @lps.each do |lp| %>
+<% if @lps.empty? %>
+  None
+<% else %>
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to lp.title, lp %></td>
+	<th><%= sortable "Title" %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @lps.each do |lp| %>
+	<tr>
+	  <td><%= link_to lp.title, lp %></td>
+	</tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

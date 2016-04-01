@@ -4,7 +4,11 @@ class GenresController < ApplicationController
   # GET /genres
   # GET /genres.json
   def index
-    @genres = Genre.all.order("#{params[:sort]} #{params[:direction]}")
+    if params[:i] && params[:i].length == 1
+      @genres = Genre.order("#{params[:sort]} #{params[:direction]}").where("name ilike ?", params[:i] + '%')
+    else
+      @genres = Genre.order("#{params[:sort]} #{params[:direction]}")
+    end
   end
 
   # GET /genres/1

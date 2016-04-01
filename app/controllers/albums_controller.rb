@@ -3,8 +3,13 @@ class AlbumsController < ApplicationController
   
   # GET /albums
   # GET /albums.json
+  
   def index
-    @albums = Album.all.order("#{params[:sort]} #{params[:direction]}")
+    if params[:i] && params[:i].length == 1
+      @albums = Album.order("#{params[:sort]} #{params[:direction]}").where("title ilike ?", params[:i] + '%')
+    else
+      @albums = Album.order("#{params[:sort]} #{params[:direction]}")
+    end
   end
 
   # GET /albums/1

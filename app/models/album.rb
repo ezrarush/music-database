@@ -13,4 +13,8 @@ class Album < ActiveRecord::Base
   def self.types
     %w(Lp Cd)
   end
+
+  def self.letter_present?(letter)
+    Album.where("title ilike ?", letter + '%').count > 0 ? true : false
+  end
 end

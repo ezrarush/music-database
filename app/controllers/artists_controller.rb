@@ -4,7 +4,11 @@ class ArtistsController < ApplicationController
   # GET /artists
   # GET /artists.json
   def index
-    @artists = Artist.all.order("#{params[:sort]} #{params[:direction]}")
+    if params[:i] && params[:i].length == 1
+      @artists = Artist.order("#{params[:sort]} #{params[:direction]}").where("name ilike ?", params[:i] + '%')
+    else
+      @artists = Artist.order("#{params[:sort]} #{params[:direction]}")
+    end    
   end
 
   # GET /artists/1

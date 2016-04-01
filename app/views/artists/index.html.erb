@@ -4,18 +4,26 @@
 
 <h1>Listing Artists</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= sortable "Name" %></th>
-    </tr>
-  </thead>
+<nav>
+  Filter: <%= alphabet_filter "Artist" %>
+</nav>
 
-  <tbody>
-    <% @artists.each do |artist| %>
+<% if @artists.empty? %>
+  None
+<% else %>
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to artist.name, artist %></td>
+	<th><%= sortable "Name" %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @artists.each do |artist| %>
+	<tr>
+	  <td><%= link_to artist.name, artist %></td>
+	</tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

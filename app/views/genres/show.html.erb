@@ -10,7 +10,7 @@
   <ul>
     <% @genre.albums.order(:title).each do |album| %>
       <li>
-	<%= link_to "#{album.title}, #{album.artist.name} (#{album.type})", album %>
+	<%= link_to "#{album.title} - #{album.artist.name} (#{album.type})", album %>
       </li>
     <% end %>
   </ul>
