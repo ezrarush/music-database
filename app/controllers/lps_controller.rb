@@ -6,9 +6,9 @@ class LpsController < ApplicationController
   def index
     @artist = Artist.find params[:artist_id]
     if params[:i] && params[:i].length == 1
-      @lps = Lp.order("#{params[:sort]} #{params[:direction]}").where("title ilike ?", params[:i] + '%')
+      @lps = @artist.lps.order("#{params[:sort]} #{params[:direction]}").where("title ilike ?", params[:i] + '%')
     else
-      @lps = Lp.order("#{params[:sort]} #{params[:direction]}")
+      @lps = @artist.lps.order("#{params[:sort]} #{params[:direction]}")
     end
   end
 
