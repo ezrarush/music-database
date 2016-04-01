@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :albums
+  get '/random', to: 'albums#random' 
   
   root 'artists#index'
 end
