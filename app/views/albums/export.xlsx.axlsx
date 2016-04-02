@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Albums") do |sheet|
+  sheet.add_row ["title", "artist", "condition", "type"]
+  @albums.each do |album|
+    sheet.add_row [album.title, album.artist.try(:name), album.condition_display, album.type]
+  end
+end

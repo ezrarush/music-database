@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   end
 
   resources :albums
-  get '/random', to: 'albums#random' 
+  get '/random', to: 'albums#random'
+  get '/export.xlsx', to: 'albums#export', as: 'export'   
   
   root 'artists#index'
 end

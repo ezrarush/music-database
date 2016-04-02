@@ -70,6 +70,12 @@ class AlbumsController < ApplicationController
     @album = Album.order('random()').first
     redirect_to @album
   end
+
+  def export
+    @albums = Album.order("title ASC")
+    # render "albums/music-database.xlsx.axlsx", filename: "chrissies-discs-#{Date.current}.xlsx"
+    render xlsx: "export.xlsx.axlsx", filename: "music-database-#{Date.current}.xlsx"     
+  end
   
   private
     # Use callbacks to share common setup or constraints between actions.
