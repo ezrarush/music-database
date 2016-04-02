@@ -1,23 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @artist.name %>'s Cds</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cds.each do |cd| %>
-      <tr>
-        <td><%= link_to cd.title, cd %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
 <%= link_to 'New Cd', new_artist_cd_path(@artist) %>
+
+<h1><%= link_to @artist.name, artist_path(@artist) %>'s Cds</h1>
+
+<nav>
+  Filter: <%= alphabet_filter "Cd", @artist %>
+</nav>
+
+<% if @cds.empty? %>
+  None
+<% else %>
+  <table>
+    <thead>
+      <tr>
+	<th>Title</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @cds.each do |cd| %>
+	<tr>
+	  <td><%= link_to cd.title, cd %></td>
+	</tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

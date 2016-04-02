@@ -19,6 +19,6 @@ class Album < ActiveRecord::Base
   end
 
   def condition_display
-    condition.humanize.partition(" ").first
+    condition ? condition.humanize.partition(" ").first : nil
   end    
 end

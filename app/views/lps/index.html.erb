@@ -2,7 +2,7 @@
 
 <%= link_to 'New Lp', new_artist_lp_path(@artist) %>
 
-<h1><%= @artist.name %>'s Lps</h1>
+<h1><%= link_to @artist.name, artist_path(@artist) %>'s Lps</h1>
 
 <nav>
   Filter: <%= alphabet_filter "Lp", @artist %>

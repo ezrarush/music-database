@@ -7,7 +7,7 @@
 
 <p>
   <strong>Artist:</strong>
-  <%= @lp.artist.try(:name) %>
+  <%= link_to @lp.artist.try(:name), artist_path(@lp.artist) %>
 </p>
 
 <p>
@@ -17,7 +17,7 @@
   <% else %>
     <ul>
       <% @lp.genres.each do |genre| %>
-        <li><%= genre.name %></li>
+        <li><%= link_to genre.name, genre_path(genre) %></li>
       <% end %>
     </ul>
   <% end %>

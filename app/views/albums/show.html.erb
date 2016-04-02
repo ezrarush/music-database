@@ -7,7 +7,7 @@
 
 <p>
   <strong>Artist:</strong>
-  <%= @album.artist.try(:name) %>
+  <%= link_to @album.artist.try(:name), artist_path(@album.artist) %>
 </p>
 
 <p>
@@ -17,7 +17,7 @@
   <% else %>
     <ul>
       <% @album.genres.each do |genre| %>
-        <li><%= genre.name %></li>
+        <li><%= link_to genre.name, genre_path(genre) %></li>
       <% end %>
     </ul>
   <% end %>
@@ -37,8 +37,6 @@
   <strong>Note:</strong>
   <%= @album.note %>
 </p>
-
-
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %>

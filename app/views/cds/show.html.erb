@@ -7,12 +7,20 @@
 
 <p>
   <strong>Artist:</strong>
-  <%= @cd.artist %>
+  <%= link_to @cd.artist.try(:name), artist_path(@cd.artist) %>
 </p>
 
 <p>
-  <strong>Condition:</strong>
-  <%= @cd.condition %>
+  <strong>Genres:</strong>
+  <% if @cd.genres.empty? %>
+    None
+  <% else %>
+    <ul>
+      <% @cd.genres.each do |genre| %>
+        <li><%= link_to genre.name, genre_path(genre) %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </p>
 
 <p>
@@ -20,6 +28,11 @@
   <%= @cd.type %>
 </p>
 
+<p>
+  <strong>Note:</strong>
+  <%= @cd.note %>
+</p>
+
 <%= link_to 'Edit', edit_cd_path(@cd) %> |
-<%= link_to 'Destroy', cd, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', cds_path %>
+<%= link_to 'Destroy', @cd, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', artist_cds_path(@cd.artist) %>

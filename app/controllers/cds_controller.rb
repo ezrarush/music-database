@@ -4,7 +4,12 @@ class CdsController < ApplicationController
   # GET /cds
   # GET /cds.json
   def index
-    @cds = Cd.all
+    @artist = Artist.find params[:artist_id]
+    if params[:i] && params[:i].length == 1
+      @cds = @artist.cds.order("#{params[:sort]} #{params[:direction]}").where("title ilike ?", params[:i] + '%')
+    else
+      @cds = @artist.cds.order("#{params[:sort]} #{params[:direction]}")
+    end
   end
 
   # GET /cds/1
@@ -14,6 +19,7 @@ class CdsController < ApplicationController
 
   # GET /cds/new
   def new
+    @artist = Artist.find params[:artist_id]
     @cd = Cd.new
   end
 
@@ -24,8 +30,9 @@ class CdsController < ApplicationController
   # POST /cds
   # POST /cds.json
   def create
+    @artist = Artist.find params[:artist_id]
     @cd = Cd.new(cd_params)
-    @cd.type = "Cd"
+    @cd.artist = @artist
     respond_to do |format|
       if @cd.save
         format.html { redirect_to @cd, notice: 'Cd was successfully created.' }
@@ -54,9 +61,10 @@ class CdsController < ApplicationController
   # DELETE /cds/1
   # DELETE /cds/1.json
   def destroy
+    artist = @cd.artist
     @cd.destroy
     respond_to do |format|
-      format.html { redirect_to cds_url, notice: 'Cd was successfully destroyed.' }
+      format.html { redirect_to artist_cds_url(artist), notice: 'Cd was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +77,6 @@ class CdsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cd_params
-      params.require(:cd).permit(:title, :artist, :condition, :type)
+      params.require(:cd).permit(:title, :artist, :condition, :type, :note, { genre_ids:[] })
     end
 end
