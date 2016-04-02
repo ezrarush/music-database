@@ -14,6 +14,11 @@
   <%= link_to "Cds", artist_cds_path(@artist) %>
 </p>
 
+</p>
+  <%= link_to "Search Spotify", spotify_artists_path(artist: @artist.name) %>
+<p>
+
+
 <%= link_to 'Edit', edit_artist_path(@artist) %> |
 <%= link_to 'Destroy', artist_path(@artist), method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', artists_path %>
