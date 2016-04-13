@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Edit', edit_lp_path(@lp) %> 
+<%= link_to 'Destroy', lp_path(@lp), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', artist_lps_path(@lp.artist) %>
+
 <p>
   <strong>Title:</strong>
   <%= @lp.title %>
@@ -37,7 +41,3 @@
   <strong>Note:</strong>
   <%= @lp.note %>
 </p>
-
-<%= link_to 'Edit', edit_lp_path(@lp) %> |
-<%= link_to 'Destroy', lp_path(@lp), method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', artist_lps_path(@lp.artist) %>

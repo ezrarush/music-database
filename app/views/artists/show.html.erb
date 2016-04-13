@@ -1,24 +1,23 @@
 <p id="notice"><%= notice %></p>
 <p id="error"><%= alert %></p>
 
+<%= link_to 'Edit', edit_artist_path(@artist) %>
+<%= link_to 'Destroy', artist_path(@artist), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', artists_path %>
+
 <p>
   <strong>Name:</strong>
   <%= @artist.name %>
 </p>
 
 <p>
-  <%= link_to "Lps", artist_lps_path(@artist) %>
+  <%= @artist.lps.count %> <%= link_to "Lps", artist_lps_path(@artist) %>
 </p>
 
 <p>
-  <%= link_to "Cds", artist_cds_path(@artist) %>
+  <%= @artist.cds.count %> <%= link_to "Cds", artist_cds_path(@artist) %>
 </p>
 
 </p>
   <%= link_to "Search Spotify", spotify_artists_path(artist: @artist.name) %>
 <p>
-
-
-<%= link_to 'Edit', edit_artist_path(@artist) %> |
-<%= link_to 'Destroy', artist_path(@artist), method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', artists_path %>

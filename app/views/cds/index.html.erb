@@ -2,7 +2,7 @@
 
 <%= link_to 'New Cd', new_artist_cd_path(@artist) %>
 
-<h1><%= link_to @artist.name, artist_path(@artist) %>'s Cds</h1>
+<h1><%= link_to @artist.name, artist_path(@artist) %>'s <%= @cds.count %> Cds</h1>
 
 <nav>
   Filter: <%= alphabet_filter "Cd", @artist %>

@@ -2,7 +2,7 @@
 
 <%= link_to 'New Genre', new_genre_path %>
 
-<h1>Listing Genres</h1>
+<h1>Listing <%= @genres.count %> Genres</h1>
 
 <nav>
   Filter: <%= alphabet_filter "Genre" %>

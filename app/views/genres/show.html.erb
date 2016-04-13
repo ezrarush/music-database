@@ -1,12 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Edit', edit_genre_path(@genre) %>
+<%= link_to 'Destroy', @genre, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', genres_path %>
+
 <p>
   <strong>Name:</strong>
   <%= @genre.name %>
 </p>
 
 <p>
-  <strong>Albums:</strong>
+  <strong><%= @genre.albums.count %> Albums:</strong>
   <ul>
     <% @genre.albums.order(:title).each do |album| %>
       <li>
@@ -15,7 +19,3 @@
     <% end %>
   </ul>
 </p>
-
-<%= link_to 'Edit', edit_genre_path(@genre) %> |
-<%= link_to 'Destroy', @genre, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', genres_path %>
