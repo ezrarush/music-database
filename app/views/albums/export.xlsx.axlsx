@@ -1,7 +1,7 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "Albums") do |sheet|
-  sheet.add_row ["title", "artist", "condition", "type", "note"]
+  sheet.add_row ["title", "artist", "condition", "type", "genre", "note"]
   @albums.each do |album|
-    sheet.add_row [album.title, album.artist.try(:name), album.condition_display, album.type, album.note]
+    sheet.add_row [album.title, album.artist.try(:name), album.condition_display, album.type, album.genres.map{|g| g.name}.join(", "), album.note]
   end
 end
