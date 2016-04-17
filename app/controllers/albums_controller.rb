@@ -73,6 +73,8 @@ class AlbumsController < ApplicationController
 
   def export
     @albums = Album.order("title ASC")
+    @artists = Artist.order("name ASC")
+    @genres = Genre.order("name ASC")    
     # render "albums/music-database.xlsx.axlsx", filename: "chrissies-discs-#{Date.current}.xlsx"
     render xlsx: "export.xlsx.axlsx", filename: "music-database-#{Date.current}.xlsx"     
   end

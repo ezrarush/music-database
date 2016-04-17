@@ -5,3 +5,15 @@ wb.add_worksheet(name: "Albums") do |sheet|
     sheet.add_row [album.title, album.artist.try(:name), album.condition_display, album.type, album.genres.map{|g| g.name}.join(", "), album.note]
   end
 end
+wb.add_worksheet(name: "Artists") do |sheet|
+  sheet.add_row ["name"]
+  @artists.each do |artist|
+    sheet.add_row [artist.name]
+  end		  
+end
+wb.add_worksheet(name: "Genres") do |sheet|
+  sheet.add_row ["name"]
+  @genres.each do |genre|
+    sheet.add_row [genre.name]
+  end
+end
