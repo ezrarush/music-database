@@ -78,8 +78,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   MusicDatabase::Application.configure do
-    config.middleware.insert_after(::Rack::Runtime, "::Rack::Auth::Basic", "Production") do |u, p|
-      [u, p] == ['username', 'password']
+    config.middleware.insert_after(::Rack::Runtime, "::Rack::Auth::Basic", "Music Database") do |u, p|
+      [u, p] == [ENV['APP_USER'], ENV['APP_PASSWORD']]
     end
   end
 end
