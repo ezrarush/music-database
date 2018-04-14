@@ -3,7 +3,13 @@
 <%= link_to 'New Album', new_album_path %>
 <%= link_to 'Export Albums', export_path %>
 
-<h1>Listing <%= @albums.count %> Albums </h1>
+<h2>
+  <%= page_entries_info @albums %>
+  <% if params[:i].present? %>
+    that start with
+    <%= params[:i] %>
+  <% end %>
+</h2>
 
 <nav>
   Filter: <%= alphabet_filter "Album" %>
@@ -33,4 +39,6 @@
       <% end %>
     </tbody>
   </table>
+
+  <%= paginate @albums %>
 <% end %>

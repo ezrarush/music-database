@@ -6,9 +6,9 @@ class AlbumsController < ApplicationController
   
   def index
     if params[:i] && params[:i].length == 1
-      @albums = Album.order("#{params[:sort]} #{params[:direction]}").where("title ilike ?", params[:i] + '%')
+      @albums = Album.order("#{params[:sort]} #{params[:direction]}").where("title ilike ?", params[:i] + '%').page params[:page]
     else
-      @albums = Album.order("#{params[:sort]} #{params[:direction]}")
+      @albums = Album.order("#{params[:sort]} #{params[:direction]}").page params[:page]
     end
   end
 
@@ -87,6 +87,6 @@ class AlbumsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def album_params
-      params.require(:album).permit(:title, :artist, :condition, :type, :note, { genre_ids:[] })
+      params.require(:album).permit(:title, :artist_id, :condition, :type, :note, { genre_ids:[] })
     end
 end

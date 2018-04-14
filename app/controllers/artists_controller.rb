@@ -5,9 +5,9 @@ class ArtistsController < ApplicationController
   # GET /artists.json
   def index
     if params[:i] && params[:i].length == 1
-      @artists = Artist.order("#{params[:sort]} #{params[:direction]}").where("name ilike ?", params[:i] + '%')
+      @artists = Artist.order("#{params[:sort]} #{params[:direction]}").where("name ilike ?", params[:i] + '%').page params[:page]
     else
-      @artists = Artist.order("#{params[:sort]} #{params[:direction]}")
+      @artists = Artist.order("#{params[:sort]} #{params[:direction]}").page params[:page]
     end    
   end
 

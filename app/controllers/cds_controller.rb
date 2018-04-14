@@ -6,9 +6,9 @@ class CdsController < ApplicationController
   def index
     @artist = Artist.find params[:artist_id]
     if params[:i] && params[:i].length == 1
-      @cds = @artist.cds.order("#{params[:sort]} #{params[:direction]}").where("title ilike ?", params[:i] + '%')
+      @cds = @artist.cds.order("#{params[:sort]} #{params[:direction]}").where("title ilike ?", params[:i] + '%').page params[:page]
     else
-      @cds = @artist.cds.order("#{params[:sort]} #{params[:direction]}")
+      @cds = @artist.cds.order("#{params[:sort]} #{params[:direction]}").page params[:page]
     end
   end
 

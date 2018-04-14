@@ -2,7 +2,15 @@
 
 <%= link_to 'New Lp', new_artist_lp_path(@artist) %>
 
-<h1><%= link_to @artist.name, artist_path(@artist) %>'s <%= @lps.count %> Lps</h1>
+<h1><%= link_to @artist.name, artist_path(@artist) %>'s Lps</h1>
+<h2>
+  <%= page_entries_info @lps %>
+  <% if params[:i].present? %>
+    that start with
+    <%= params[:i] %>
+  <% end %>
+</h2>
+
 
 <nav>
   Filter: <%= alphabet_filter "Lp", @artist %>
@@ -26,4 +34,6 @@
       <% end %>
     </tbody>
   </table>
+
+  <%= paginate @lps %>
 <% end %>

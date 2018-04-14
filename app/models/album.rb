@@ -1,4 +1,4 @@
-class Album < ActiveRecord::Base
+class Album < ApplicationRecord
 
   validates :title, :artist_id, presence: true
   

@@ -1,4 +1,0 @@
-class RemoveArtistFromAlbums < ActiveRecord::Migration
-  def change
-  end
-end

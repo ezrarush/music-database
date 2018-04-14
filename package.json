@@ -1,0 +1,8 @@
+{
+  "name": "music-database",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ezrarush/music-database.git",
+  "author": "Ezra Rush <rushwest@gmail.com>",
+  "license": "MIT"
+}

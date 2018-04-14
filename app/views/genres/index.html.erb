@@ -2,7 +2,15 @@
 
 <%= link_to 'New Genre', new_genre_path %>
 
-<h1>Listing <%= @genres.count %> Genres</h1>
+
+<h2>
+  Displaying <%= pluralize @genres.count, 'genre' %>
+  <% if params[:i].present? %>
+    that start with
+    <%= params[:i] %>
+  <% end %>
+</h2>
+
 
 <nav>
   Filter: <%= alphabet_filter "Genre" %>

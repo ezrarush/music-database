@@ -1,1 +1,0 @@
-class Cd < Album; end
